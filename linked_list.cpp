@@ -13,7 +13,10 @@ public:
     int data;
     Node* next;
 
-    Node(int value) : data(value), next(nullptr) {}
+    Node(int value){
+        this->data = value;
+        next = nullptr;
+    }
 };
 
 class Queue {
@@ -150,6 +153,7 @@ int main() {
                 cout << "Invalid choice. Please enter a valid option." << endl;
         }
     }
+    cin.ignore();
 
     return 0;
 }
