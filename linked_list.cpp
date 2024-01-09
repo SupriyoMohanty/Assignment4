@@ -1,6 +1,4 @@
-// Implement Queue using linked list. 
-// But, a linked list can have maximum 5 elements, so if the user pushes sixth element then 
-// you should create one more linked list and push the newer element into that linked list.
+
 
 // For the outside user, your program should have only two functions:
 //   1. push()
@@ -39,12 +37,12 @@ public:
         return size == max_size;
     }
 
-    void enqueue(int data) {
+    void push(int data) {
         if (is_full()) {
             if (next_queue == nullptr) {
                 next_queue = new Queue(max_size); //assigning next_queue with max size 
             }
-            next_queue->enqueue(data);
+            next_queue->push(data);
             return;
         }
 
@@ -58,11 +56,11 @@ public:
         size++;
     }
 
-    int dequeue() {
+    int pop() {
         if (is_empty()) {
             if (next_queue != nullptr) {
-                int dequeuedValue = next_queue->dequeue();
-                return dequeuedValue;
+                int popedValue = next_queue->pop();
+                return popedValue;
             } else {
                 cout << "Queue is empty" << endl;
                 return -1; // Assuming -1 as an indicator of an empty queue
@@ -116,8 +114,8 @@ int main() {
     Queue mainQueue;
 
     while (true) {
-        cout << "\n1. Enqueue";
-        cout << "\n2. Dequeue";
+        cout << "\n1. push";
+        cout << "\n2. pop";
         cout << "\n3. Display";
         cout << "\n4. Quit" << endl;
 
@@ -128,16 +126,16 @@ int main() {
         switch (choice) {
             case 1: {
                 int value;
-                cout << "Enter the value to enqueue: ";
+                cout << "Enter the value to push: ";
                 cin >> value;
-                mainQueue.enqueue(value);
-                cout << value << " enqueued to the queue." << endl;
+                mainQueue.push(value);
+                cout << value << " Pushed into the queue." << endl;
                 break;
             }
             case 2: {
-                int dequeuedValue = mainQueue.dequeue();
-                if (dequeuedValue != -1) {
-                    cout << dequeuedValue << " dequeued from the queue." << endl;
+                int popedValue = mainQueue.pop();
+                if (popedValue != -1) {
+                    cout << popedValue << " poped out from the queue." << endl;
                 }
                 break;
             }
